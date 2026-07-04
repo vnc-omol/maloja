@@ -1,0 +1,33 @@
+name: Publish Docker image
+
+on:
+  push:
+    branches:
+      - master # Oder der Branch, den Sie für Ihre Änderungen verwenden (z.B. main, mobile-first)
+
+env:
+  DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
+  DOCKER_IMAGE_NAME: olemo27/maloja # Dies ist der Name Ihres Docker Hub Repositorys (z.B. olemo/maloja)
+  IMAGE_TAG: latest # Der Tag für Ihr Image (z.B. latest, mobile-first)
+
+jobs:
+  build-and-push-docker-image:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ env.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_TOKEN }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Containerfile # Oder Dockerfile, falls Sie es umbenannt haben
+          push: true
+          tags: ${{ env.DOCKER_HUB_USERNAME }}/${{ env.DOCKER_IMAGE_NAME }}:${{ env.IMAGE_TAG }}
