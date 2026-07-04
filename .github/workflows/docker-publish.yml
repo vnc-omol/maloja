@@ -7,7 +7,7 @@ on:
 
 env:
   DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
-  DOCKER_IMAGE_NAME: olemo27/maloja # Dies ist der Name Ihres Docker Hub Repositorys (z.B. olemo/maloja)
+  DOCKER_IMAGE_NAME: maloja # Dies ist der Name Ihres Docker Hub Repositorys (z.B. maloja)
   IMAGE_TAG: latest # Der Tag für Ihr Image (z.B. latest, mobile-first)
 
 jobs:
