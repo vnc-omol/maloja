@@ -4,6 +4,7 @@
 
 	<head>
 		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="referrer" content="same-origin" />
 
 		<title>{% block title %}{% endblock %}</title>
@@ -75,7 +76,10 @@
             <a href="/"><img style="display:block;" src="/favicon.png" /></a>
           </div>
           <div id="right-side">
-            <span><input id="searchinput" placeholder="Search for an album, artist or track..." oninput="search(this)" onblur="clearresults()" /></span>
+            <div id="search-container-inner">
+              <input id="searchinput" placeholder="Search for an album, artist or track..." oninput="search(this)" onfocus="onSearchFocus()" onblur="onSearchBlur()" />
+              <button id="search-cancel-btn" onclick="cancelSearch()">✕</button>
+            </div>
           </div>
 
 

@@ -48,3 +48,13 @@ div#startpage {
 		display: none;
 	}
 }
+
+/* Specific Mobile Optimization for CachyOS and other modern mobile browsers */
+@media (max-width: 768px) {
+	div#startpage {
+		grid-template-columns: 100% !important;
+		grid-column-gap: 0 !important;
+		grid-row-gap: 15px !important;
+		padding: 0 5px;
+	}
+}

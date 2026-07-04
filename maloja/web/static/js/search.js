@@ -123,9 +123,32 @@ function clearresults() {
 	window.setTimeout(reallyclear,500)
 }
 function reallyclear() {
-	searchresultwrap.classList.add("hide")
+	searchresultwrap.classList.add("hide");
+	// Only remove active body class on slow timeout so clicks on results register first
+	setTimeout(function() {
+		if (document.getElementById("searchinput") !== document.activeElement) {
+			document.body.classList.remove("search-active");
+		}
+	}, 100);
 }
 
 function goto(link) {
 	window.location = link
+}
+
+/* Mobile Search Interaction Hooks */
+function onSearchFocus() {
+	document.body.classList.add("search-active");
+}
+
+function onSearchBlur() {
+	clearresults();
+}
+
+function cancelSearch() {
+	const input = document.getElementById("searchinput");
+	input.value = "";
+	input.blur();
+	reallyclear();
+	document.body.classList.remove("search-active");
 }

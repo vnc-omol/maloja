@@ -165,3 +165,24 @@ input:focus {
 .hide {
 	display:none !important;
 }
+
+
+/* Mobile and Touch Optimizations */
+@media (max-width: 768px) {
+	/* Larger Touch Targets for all Text and Number Inputs */
+	input[type="text"], input[type="number"] {
+		padding: 10px 6px !important;
+		font-size: 1.1rem !important;
+		border-radius: 4px;
+	}
+
+	/* Disable custom scrollbars on mobile to allow smooth native kinetic scrolling */
+	::-webkit-scrollbar {
+		width: 4px;
+	}
+
+	/* Ensure momentum scrolling is active for iOS */
+	body, div, section, ul {
+		-webkit-overflow-scrolling: touch;
+	}
+}
